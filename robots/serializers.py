@@ -10,3 +10,7 @@ class RobotCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Robot
         fields = ('model', 'version', 'created')
+    
+    def create(self, validated_data):
+        serial = f"{validated_data['model']}-{validated_data['version']}"
+        return Robot.objects.create(serial=serial, **validated_data)
