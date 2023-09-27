@@ -1,3 +1,6 @@
 from django.urls import path
+from .views import RobotCreateView
 
-urlpatterns = []
+urlpatterns = [
+    path('create/', RobotCreateView.as_view(), name='robot_create'),
+]
